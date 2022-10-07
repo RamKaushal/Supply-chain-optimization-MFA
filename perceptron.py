@@ -22,7 +22,7 @@ class perceptron:
     def fit(self,X,y):
         self.X = X
         self.y = y 
-        X_with_bias = np.c_[self.X,np.ones(4,1)]
+        X_with_bias = np.c_[self.X,np.ones([4,1])]
         print("X with bias is: ".format(X_with_bias))
         #return X_with_bias
         for i in range(self.epoch):
@@ -32,6 +32,7 @@ class perceptron:
             print("yhat of epoch {} is {}".format(i,y_hat))
             self.error = self.y - y_hat
             self.weights = self.weights+self.epoch * np.dot(X_with_bias.T,self.error)
+        
     
     def predict(self,x):
         x_with_bias =  np.c_[x,np.ones(4,1)]
@@ -46,9 +47,16 @@ OR = {
     "y":[0,1,1,1]
 }
 
-dataframes = pd,pd.DataFrame(OR)
+dataframes = pd.DataFrame(OR)
 
-
+def prepare_date(dataframe):
+   x = dataframe.drop(columns=['y'])
+   y = dataframe[['y']]
+   return x,y 
 
 if __name__ == "__main__":
-    print(dataframes)
+    x,y = prepare_date(dataframes)
+    eta = 0.1
+    epochs = 10 
+    percep = perceptron(eta,epochs)
+    percep.fit(x,y)
