@@ -37,10 +37,18 @@ class perceptron:
         x_with_bias =  np.c_[x,np.ones(4,1)]
         weight_update = weight_bias(x_with_bias,self.weights)
         return activation(weight_update)
+
         
-        
+OR = {
+
+    "x1":[0,0,1,1],
+    "x2":[0,1,0,1],
+    "y":[0,1,1,1]
+}
+
+dataframes = pd,pd.DataFrame(OR)
 
 
 
 if __name__ == "__main__":
-    print("Work in progress")
+    print(dataframes)
