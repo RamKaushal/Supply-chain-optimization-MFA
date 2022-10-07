@@ -14,6 +14,8 @@ class perceptron:
     def weights_bias(self,weights,bias):
         return np.dot(weights,bias)
     
+    def activation(z):
+        return np.where(z>0,1,0)
 
 
 
@@ -26,6 +28,16 @@ class perceptron:
         for i in range(self.epoch):
             z = weights_bias(X_with_bias,self.weights)
             print("Ephoc {} weights+vales is {}".format(i,z))
+            y_hat = activation(z)
+            print("yhat of epoch {} is {}".format(i,y_hat))
+            self.error = self.y - y_hat
+            self.weights = self.weights+self.epoch * np.dot(X_with_bias.T,self.error)
+    
+    def predict(self,x):
+        x_with_bias =  np.c_[x,np.ones(4,1)]
+        weight_update = weight_bias(x_with_bias,self.weights)
+        return activation(weight_update)
+        
         
 
 
