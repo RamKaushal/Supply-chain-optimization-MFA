@@ -10,13 +10,25 @@ class perceptron:
         self.weights = np.random.rand(3) * 1e-4
         self.eta = eta 
         self.epoch = epoch 
+    
+    def weights_bias(self,weights,bias):
+        return np.dot(weights,bias)
+    
+
+
+
     def fit(self,X,y):
         self.X = X
         self.y = y 
         X_with_bias = np.c_[self.X,np.ones(4,1)]
         print("X with bias is: ".format(X_with_bias))
-        return X_with_bias
+        #return X_with_bias
+        for i in range(self.epoch):
+            z = weights_bias(X_with_bias,self.weights)
+            print("Ephoc {} weights+vales is {}".format(i,z))
+        
+
 
 
 if __name__ == "__main__":
-    
+    print("Work in progress")
